@@ -1,0 +1,15 @@
+<!-- product_full_description.html -->
+
+{% load static %}
+
+<div class="card-body">
+    <p >{{ product.description }}</p>
+    <a href="javascript:void(0);" 
+       hx-get="{% url 'main:product_short_description' product_id=product.id %}" 
+       hx-target="#card-{{ product.id }} .card-body" 
+       hx-swap="outerHTML" 
+       hx-trigger="click">Read Less</a>
+
+
+</div>
+    

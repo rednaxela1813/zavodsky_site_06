@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+    <!-- Стиль footer-a для главной страницы -->
+     {% block footer-css %}
+     <link rel="stylesheet" href="{% static 'deps/css/my_footer_css.css' %}">
+     {% endblock footer-css %}
+    
+    
+
+{% block content%}
+    {% for category in categories %}
+            <div class="col-lg-4 col-md-6 p-4">
+                <div class="card border-primary rounded custom-shadow">
+                   <h5 class="card-title p-2">{{ category.name }}</h5>
+                   {% with category.get_photos.first as first_photo %}
+                       {% if first_photo %}
+                       <img class="card-img p-2" src="{{ first_photo }}" alt="Photo for {{ category.name }}">
+                       {% endif %}
+                   {% endwith %}
+                   <p class="card-text">{{ category.description }}</p>
+                   <a href="{% url 'main:rent' %}" class="btn btn-sm btn-dark  decrement m-2">Go somewhere</a>    
+                   
+                </div>
+            </div>
+    {% endfor %}
+  
+        
+
+   
+
+{% endblock content %}
+
+{% block footer %}
+<footer class="py-4 bg-dark">
+  <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Home Python Hub Studio 2023</p>
+  </div>
+</footer>
+{% endblock footer %}
+

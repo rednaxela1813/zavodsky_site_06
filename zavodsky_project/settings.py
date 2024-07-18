@@ -52,7 +52,7 @@ SOCIAL_AUTH_FACEBOOK_KEY = env('SOCIAL_AUTH_FACEBOOK_KEY')
 SOCIAL_AUTH_FACEBOOK_SECRET = env('SOCIAL_AUTH_FACEBOOK_SECRET')
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -73,8 +73,12 @@ INSTALLED_APPS = [
     "allauth.socialaccount.providers.facebook",
 
     "crispy_forms",
+    'crispy_bootstrap5',
 
     "accounts",
+    "pages.apps.PagesConfig",
+    
+    "goods.apps.GoodsConfig",
 ]
 
 MIDDLEWARE = [
@@ -174,13 +178,20 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
-ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+#ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+#ACCOUNT_EMAIL_REQUIRED = True
+#ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
+
+
+ACCOUNT_FORMS = {
+    'login': 'accounts.forms.CustomLoginForm',
+    'signup': 'accounts.forms.CustomSignupForm',
+}
 

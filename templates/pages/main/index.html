@@ -1,0 +1,71 @@
+{% extends "pages/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content%}
+
+{% for category in categories %}
+    <section id="home" class="background-container" >
+        <h3>Category</h3>
+        {% comment %} <div class="category-info" id="category-info-{{ category.id }}">
+            <h1 id="category-name">{{ category.name }}</h1>
+            <p id="category-description">{{ category.description }}</p>
+            <a href="#" id="category-link" class="btn btn-primary"            
+          <!--  hx-get="{% url 'home:category_products' category.id %}"  -->
+            hx-target="#category-info-{{ category.id }}" 
+            hx-swap="outerHTML">Learn More</a> {% endcomment %}
+        </div>
+    </section>
+
+    
+
+{% endfor %}
+
+<section >
+    <div class="container-fluid text-center content">
+        
+    </div>
+</section>
+
+<section id="about" class="bg-light content">
+    <div class="container-fluid text-center content">
+        <h2>About Us</h2>
+        <p></p>
+        
+    </div>
+</section>
+<section >
+    <div class="container-fluid text-center content">
+        
+    </div>
+</section>
+
+<!-- contact.html -->
+{% load crispy_forms_tags %}
+<section id="contact" class="bg-light">
+    <div class="container">
+        <h2 class="text-center">Contact Us</h2>
+        <h2 class="text-center">{{ contact.title }}</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <p>Adresa: {{ contact.address }}</p>
+                <p>Telefon: {{ contact.phone }}</p>
+                <p>IČO: {{ contact.ico }}    DIČ: {{ contact.dic }}    IČ DPH: {{ contact.ic_dph }}</p>
+                <p>email: <a href="mailto:{{ contact.email }}">{{ contact.email }}</a></p>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2661.5134892357137!2d17.051761176288228!3d48.15818394972654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476c8b9b1fbab9b1%3A0xf6d4746e65ed075e!2sFadruszova%20726%2F11%2C%20841%2004%20Karlova%20Ves!5e0!3m2!1sen!2ssk!4v1720000942348!5m2!1sen!2ssk" 
+                width="100%" height="450" style="border:0;" allowfullscreen=""
+                loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div id="div-for-change" class="col-md-6 p-2">
+                {% comment %} <div hx-get="{% url 'main:contact_form' %}" hx-target="#contact-form-container" hx-trigger="revealed" hx-swap="innerHTML"></div> {% endcomment %}
+                <div id="contact-form-container"></div>
+            </div>
+            
+                
+    </div>
+    
+</section>
+
+
+{% endblock %}

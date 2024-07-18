@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container-fluid content">
+        <div class="row m-auto  bg-light custom-shadow rounded">
+            <!-- Thumbnails Column -->
+            <div class="col-lg-2">
+                <div class="d-flex flex-column">
+                    {% for photo in product.get_photos %}
+                        <img class="img-thumbnail mb-2" src="{{ photo }}" alt="Thumbnail for {{ category.name }}" data-bs-target="#carousel-{{ product.id }}" data-bs-slide-to="{{ forloop.counter0 }}">
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <!-- Main Carousel -->
+            <div class="col-md-10 ">
+                <h5 class="card-title p-2">{{ category.name }}</h5>
+                <div id="carousel-{{ product.id }}" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        {% for photo in product.get_photos %}
+                            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                <img class="d-block w-100 p-2 carousel-image" src="{{ photo }}" alt="Photo for {{ category.name }}">
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <a class="carousel-control-prev" href="#carousel-{{ product.id }}" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carousel-{{ product.id }}" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </a>
+                </div>
+                
+
+                <p class="short-description p-4">{{ product.description }}</p>
+                {% with product.get_properties as property %}
+                    {% if property %}
+                        <ul class="make_list">
+                            {% for prop in property %}
+                                <li class="list-group-item"> - {{ prop.description }}</li>
+                            {% endfor %}    
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+                {% comment %} <a href="{% url 'main:rent' %}"
+                 class="btn btn-sm btn-dark decrement m-2">Go somewhere</a>     {% endcomment %}
+            </div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2653.204847305138!2d18.104026076296734!3d48.318142538573476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476b3ec48be6e98d%3A0xdd6fcb5c2ef12f63!2zxaDDrXBvdsOhIDU3LzEsIDk0OSAwMSBOaXRyYS1DaHJlbm92w6E!5e0!3m2!1sen!2ssk!4v1720000165287!5m2!1sen!2ssk"
+             width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+{% endblock %}
+

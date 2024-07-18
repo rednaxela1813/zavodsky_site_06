@@ -1,0 +1,38 @@
+
+<div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => { show = false; $refs.redirectDiv.dispatchEvent(new Event('revealed')); }, 5000)">
+    <h1>Email Sent Successfully!</h1>
+    <p>You will be redirected back to the form in a few seconds...</p>
+    <div x-ref="redirectDiv" 
+         hx-trigger="revealed" 
+         hx-get="{% url 'main:contact_form' %}" 
+         hx-target="#contact-form-container" 
+         style="display: none;"></div>
+</div> 
+{% comment %} <div>
+     <h1>Email Sent Successfully!</h1>
+     <p>You will be redirected back to the form in a few seconds...</p>
+     <button onclick="replaceAndResetTrigger('div-for-change')">Rewrite Content</button>
+ </div> {% endcomment %}
+ 
+
+ {% comment %} <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => { show = false; $refs.redirectDiv.dispatchEvent(new Event('revealed')); }, 5000)">
+    <h1>Email Sent Successfully!</h1>
+    <p>You will be redirected back to the form in a few seconds...</p>
+    {% comment %} <form x-ref="redirectForm" method="get" action="{% url 'main:contact_form_return' %}" "></form> {% endcomment %}
+    
+    {% comment %} <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 5000)">
+     <template x-if="show">
+         <div id="myElement">
+             <!-- Initial Content -->
+             This element will be replaced after 5 seconds.
+         </div>
+     </template>
+     <template x-if="!show">
+         <div id="myElement" hx-get="{% url 'main:contact_form' %}"hx-target="#contact-form-container" hx-swap="innerHTML" hx-trigger="revealed">
+             <!-- Placeholder for new content -->
+             Loading new content...
+             print("{% url 'main:contact_form' %})
+             
+         </div>
+     </template>
+ </div> {% endcomment %}

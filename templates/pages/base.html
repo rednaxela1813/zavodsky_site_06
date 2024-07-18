@@ -1,0 +1,100 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'deps/css/bootstrap/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'deps/css/my_css.css' %}">
+    <script type="text/javascript" src="{% static 'deps/js/htmx.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'deps/js/alpine.min.js' %}" defer></script>
+
+    {% block footer-css %}{% endblock footer-css %}
+
+    <!-- Favicons for different platforms -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'deps/favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'deps/favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'deps/favicon/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'deps/favicon/site.webmanifest' %}">
+    <title>Home</title>
+    <style>
+        
+    </style>
+</head>
+
+<body class="body" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+            <div class="container">
+                <a class="navbar-brand" href="#home">Home</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#services">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <img class="mx-1" src="{% static '/deps/icons/cart-plus.svg' %}" alt="Catalog Icon"
+                            width="32" height="32">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success text-white" type="submit">Search</button>
+                    </form>
+                    <a class="nav-link p-3 ml-5 text-white" href="{% url 'account_login' %}">Login</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+<div class="container mt-5 p-4">
+    {% block content %}
+    
+    {% endblock content %}
+</div>
+    
+    {% block about %}
+    
+    {% endblock %}
+    
+    {% if user.is_authenticated %}
+    <section id="services">
+        <div class="container text-center text-white">
+            <h2>Our Services</h2>
+            <p>Details of services offered.</p>
+        </div>
+    </section>
+    {% endif %}
+    
+    
+    
+    {% block footer %}{% endblock footer %}
+    
+    <script src="{% static 'deps/js/jquery/jquery-3.7.0.min.js'%}"></script>
+    <script src="{% static 'deps/js/jquery-events.js' %}"></script>
+    <script src="{% static 'deps/js/jquery-ajax.js' %}"></script>
+    <script src="{% static 'deps/js/bootstrap/bootstrap.bundle.min.js' %}"></script>
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
