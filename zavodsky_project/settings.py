@@ -77,7 +77,7 @@ INSTALLED_APPS = [
 
     "accounts",
     "pages.apps.PagesConfig",
-    
+   # "main.apps.MainConfig",
     "goods.apps.GoodsConfig",
 ]
 

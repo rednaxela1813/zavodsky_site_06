@@ -15,5 +15,6 @@
     </form>
     <p><a href="{% url 'account_reset_password' %}">Forgot Password?</a></p>
     <p><a href="{% url 'account_signup' %}">Sign Up</a></p>
+    <a href="{% url 'socialaccount_login' 'google' %}" class="btn btn-danger">Login with Google</a>
 </div>
 {% endblock %}

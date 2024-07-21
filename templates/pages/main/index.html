@@ -7,14 +7,14 @@
 
 {% for category in categories %}
     <section id="home" class="background-container" >
-        <h3>Category</h3>
-        {% comment %} <div class="category-info" id="category-info-{{ category.id }}">
+        
+            <div class="category-info" id="category-info-{{ category.id }}">
             <h1 id="category-name">{{ category.name }}</h1>
             <p id="category-description">{{ category.description }}</p>
             <a href="#" id="category-link" class="btn btn-primary"            
-          <!--  hx-get="{% url 'home:category_products' category.id %}"  -->
+            hx-get="{% url 'goods:category_products' category.id %}" 
             hx-target="#category-info-{{ category.id }}" 
-            hx-swap="outerHTML">Learn More</a> {% endcomment %}
+            hx-swap="outerHTML">Learn More</a>
         </div>
     </section>
 
