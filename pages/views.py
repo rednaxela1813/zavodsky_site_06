@@ -5,8 +5,8 @@ from django.views.generic import TemplateView
 
 
 
-# class HomePageView(LoginRequiredMixin, TemplateView):
-#     template_name = "pages/main/index.html"
+class HomePageView(TemplateView):
+    template_name = "pages/main/index.html"
     
     
 
