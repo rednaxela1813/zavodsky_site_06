@@ -9,13 +9,13 @@ from django.shortcuts import get_object_or_404
 class SPAView(TemplateView):
     template_name = 'pages/main/index.html'
 
-    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
-        context = super().get_context_data(**kwargs)
-        context['categories'] = Category.objects.all()
-        context['products'] = Product.objects.all()
+    # def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
+    #     context = super().get_context_data(**kwargs)
+    #     context['categories'] = Category.objects.all()
+        #context['products'] = Product.objects.all()
        # context['contact'] = Contact.objects.first()
 
-        return context
+        # return context
     
 
 def category_products(request, category_id):
