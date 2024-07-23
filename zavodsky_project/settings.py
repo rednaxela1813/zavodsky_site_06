@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from poplib import CR
+from django.conf.global_settings import STATIC_ROOT, STATICFILES_DIRS, STATICFILES_STORAGE
 import environ
 
 env = environ.Env(
@@ -164,6 +166,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
+STATICFILES_DIRS = [BASE_DIR / "static"]
+STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -178,6 +183,8 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 #ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 #ACCOUNT_EMAIL_REQUIRED = True
 #ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
@@ -185,13 +192,17 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap"
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
 
-ACCOUNT_FORMS = {
-    'login': 'accounts.forms.CustomLoginForm',
-    'signup': 'accounts.forms.CustomSignupForm',
-}
+# ACCOUNT_FORMS = {
+#     'login': 'accounts.forms.CustomLoginForm',
+#     'signup': 'accounts.forms.CustomSignupForm',
+# }
 
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_SAVE_EVERY_REQUEST = False

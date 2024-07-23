@@ -20,8 +20,9 @@ class PropertiesInline(GenericTabularInline):
 
 
 class ProductAdmin(admin.ModelAdmin):
-    inlines = [PhotoInline]
-    inlines = [PropertiesInline]
+    inlines = [PhotoInline, PropertiesInline]
+    exclude = ['photos_product']
+    
 
 
 
@@ -31,5 +32,5 @@ admin.site.register(Address)
 admin.site.register(Phone)
 admin.site.register(Property)
 admin.site.register(Product, ProductAdmin)
-admin.site.register(Photo)
+#admin.site.register(Photo)
 admin.site.register(Email)

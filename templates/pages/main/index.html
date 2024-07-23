@@ -4,7 +4,7 @@
 
 
 {% block content%}
-
+ 
 {% for category in categories %}
     <section id="home" class="background-container" >
         
@@ -12,15 +12,28 @@
             <h1 id="category-name">{{ category.name }}</h1>
             <p id="category-description">{{ category.description }}</p>
             <a href="#" id="category-link" class="btn btn-primary"            
-            hx-get="{% url 'goods:category_products' category.id %}" 
+            hx-get="{% url 'pages:category_detail' category.id %}" 
             hx-target="#category-info-{{ category.id }}" 
             hx-swap="outerHTML">Learn More</a>
         </div>
-    </section>
+    </section>  
 
-    
+{% endfor %} 
 
-{% endfor %}
+
+{% comment %} <div class="container my-4">
+    <div class="row justify-content-center">
+        {% for category in categories %}
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="card text-center p-4 category-card">
+                <p class="category-name mb-3">{{ category.name }}</p>
+                <a href="{% url 'category_details' category.id %}" class="btn btn-primary">Details</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div> {% endcomment %}
+
 
 <section >
     <div class="container-fluid text-center content">

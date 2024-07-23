@@ -80,7 +80,7 @@ class Category(models.Model):
 class Product(models.Model):
    # uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255, blank=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, blank=True, related_name='products')
+    category = models.ForeignKey('Category', on_delete=models.CASCADE, blank=True, related_name='products')
    # property = models.ManyToManyField('Property', blank=True, related_name='products')
     address = models.OneToOneField(Address, on_delete=models.CASCADE, blank=True, related_name='product')
     description = models.TextField(blank=True)
