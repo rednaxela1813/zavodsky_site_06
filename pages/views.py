@@ -3,14 +3,14 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView, View, DetailView
 from goods.models import Category, Product
 from django.shortcuts import get_object_or_404
-from django.http import JsonResponse
+
 
 from typing import Any
 
 
 
 
-class HomePageView(TemplateView):
+class HomePageView(LoginRequiredMixin, TemplateView):
     template_name = "pages/main/index.html"
 
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
@@ -59,7 +59,14 @@ class ProductDetailView(DetailView):
     
 
 
+class ProductFullDescriptionView(DetailView):
+    model = Product
+    template_name = 'pages/main/product_full_description.html'
+    context_object_name = 'product'
+
+
+
 class ProductShortDescriptionView(DetailView):
     model = Product
-    template_name = 'partials/product_short_description.html'
+    template_name = 'pages/main/product_short_description.html'
     context_object_name = 'product'

@@ -1,6 +1,6 @@
 from django.urls import path
+from . import views
 
-from .views import HomePageView, category_products, CategoryDetailView, ProductDetailView
 
 
 app_name = "pages"
@@ -8,9 +8,12 @@ app_name = "pages"
 
 
 urlpatterns = [
-    path("", HomePageView.as_view(), name="home"),
-    path('category/<int:category_id>/', category_products, name='category_products'),
-    path('category/<int:pk>/detail/', CategoryDetailView.as_view(), name='category_detail'),
-    path('product/<int:pk>/detail/', ProductDetailView.as_view(), name='product_detail')
+    path("", views.HomePageView.as_view(), name="home"),
+    path('category/<int:category_id>/', views.category_products, name='category_products'),
+    path('category/<int:pk>/detail/', views.CategoryDetailView.as_view(), name='category_detail'),
+    path('product/<int:pk>/detail/', views.ProductDetailView.as_view(), name='product_detail'),
+    path('product/<int:pk>/full_description/', views.ProductFullDescriptionView.as_view(), name='product_full_description'),
+    path('product/<int:pk>/short_description/', views.ProductShortDescriptionView.as_view(), name='product_short_description'),
 ]
+
 

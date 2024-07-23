@@ -2,11 +2,8 @@
 <div class="card-body">
     <p class="short-description">{{ product.description|truncatewords:10 }}</p>
     <a href="javascript:void(0);" 
-       hx-get="{% url 'main:product_full_description' product_id=product.id %}" 
+       hx-get="{% url 'pages:product_full_description' pk=product.id %}" 
        hx-target="#card-{{ product.id }} .card-body" 
        hx-swap="outerHTML" 
        hx-trigger="click">Read More</a>
-
-
-
 </div>
