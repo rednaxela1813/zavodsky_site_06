@@ -53,11 +53,12 @@ INSTALLED_APPS = [
     "allauth.socialaccount",
     "allauth.socialaccount.providers.google",
     "allauth.socialaccount.providers.facebook",
-
+    
+    "django_browser_reload",
     "crispy_forms",
     'crispy_bootstrap5',
 
-
+   
     "accounts",
     "pages",
     "goods",
