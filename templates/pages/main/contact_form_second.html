@@ -1,0 +1,11 @@
+{% load crispy_forms_tags %}
+
+<form method="post" hx-post="{% url 'pages:contact_form_second' %}" hx-target="#contact-form-container_second" hx-swap="innerHTML">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <div class="d-flex justify-content-end mt-3">
+    <button type="submit" class="btn btn-primary">Send</button>
+    </div>
+</form>
+
+{% comment %} hx-post="{% url 'pages:contact_form' %}" hx-target="#contact-form-container" hx-swap="innerHTML" {% endcomment %}

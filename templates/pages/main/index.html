@@ -71,7 +71,8 @@
                 loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
             <div id="div-for-change" class="col-md-6 p-2">
-                {% comment %} <div hx-get="{% url 'main:contact_form' %}" hx-target="#contact-form-container" hx-trigger="revealed" hx-swap="innerHTML"></div> {% endcomment %}
+                
+                 <div hx-get="{% url 'pages:contact_form' %}" hx-target="#contact-form-container" hx-trigger="revealed" hx-swap="innerHTML"></div> 
                 <div id="contact-form-container"></div>
             </div>
             

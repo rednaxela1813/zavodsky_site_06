@@ -1,13 +1,35 @@
-
-<div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => { show = false; $refs.redirectDiv.dispatchEvent(new Event('revealed')); }, 5000)">
+<div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => { show = false; resetRevealed(); }, 5000)">
     <h1>Email Sent Successfully!</h1>
     <p>You will be redirected back to the form in a few seconds...</p>
-    <div x-ref="redirectDiv" 
-         hx-trigger="revealed" 
-         hx-get="{% url 'main:contact_form' %}" 
-         hx-target="#contact-form-container" 
-         style="display: none;"></div>
+    <div x-ref="redirectDiv" hx-get="{% url 'pages:contact_form_second' %}" hx-target="#contact-form-container_second" style="display: none;" hx-trigger="revealed"></div>
+</div>
+<div id="contact-form-container_second"></div>
+
+<script>
+    function resetRevealed() {
+        const redirectDiv = document.querySelector('[x-ref="redirectDiv"]');
+        if (redirectDiv) {
+            // Remove the element from the DOM
+            redirectDiv.remove();
+            // Recreate the element and append it back to the DOM
+            const newDiv = document.createElement('div');
+            newDiv.setAttribute('x-ref', 'redirectDiv');
+            newDiv.setAttribute('hx-get', '{% url "pages:contact_form_second" %}');
+            newDiv.setAttribute('hx-target', '#contact-form-container_second');
+            newDiv.setAttribute('style', 'display: none;');
+            newDiv.setAttribute('hx-trigger', 'revealed');
+            document.body.appendChild(newDiv);
+            // Dispatch the revealed event
+            newDiv.dispatchEvent(new Event('revealed'));
+        }
+    }
+</script>
+{% comment %} <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => { show = false; $refs.redirectDiv.dispatchEvent(new Event('revealed')); }, 5000)">
+    <h1>Email Sent Successfully!</h1>
+    <p>You will be redirected back to the form in a few seconds...</p>
+    <div x-ref="redirectDiv" hx-get="{% url 'pages:contact_form_second' %}" hx-target="#contact-form-container_second"  style="display: none;" hx-trigger="revealed"></div> 
 </div> 
+<div id="contact-form-container_second"></div> {% endcomment %}
 {% comment %} <div>
      <h1>Email Sent Successfully!</h1>
      <p>You will be redirected back to the form in a few seconds...</p>

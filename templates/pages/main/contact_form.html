@@ -1,6 +1,6 @@
 {% load crispy_forms_tags %}
-<h2 class="text-center">Send Email from hire!</h2>
-<form method="post" hx-post="{% url 'main:contact_form' %}" hx-target="#contact-form-container" hx-swap="innerHTML">
+
+<form method="post" hx-post="{% url 'pages:contact_form' %}" hx-target="#contact-form-container" hx-swap="innerHTML">
     
     {{ form|crispy }}
     <div class="d-flex justify-content-end mt-3">
