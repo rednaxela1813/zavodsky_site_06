@@ -1,0 +1,146 @@
+.body {
+  background-image: url("../images/bg-image.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
+  height: 100%;
+}
+/* Media query for mobile devices */
+@media (max-width: 767px) {
+  .body {
+    background-image: none; /* Remove the background image */
+    background-color: #f0f0f0; /* Set a solid background color */
+  }
+}
+
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  z-index: 1000; /* Ensure the navbar is above other content */
+}
+
+ .card {
+            margin-bottom: 10px; /* Reduce margin between cards */
+            transition: all 0.5s ease; /* Smooth transition for height and other properties */
+        }
+       
+
+ .card-body {
+            padding: 10px; /* Reduce padding inside card body */
+            transition: max-height 0.5s ease; /* Smooth transition for height */
+        }
+
+.dropdown-toggle::after {
+  content: none;
+}
+
+.custom-shadow {
+  box-shadow: 5px 5px 25px 19px #000000;
+}
+
+.product_id {
+  color: gray;
+  font-size: 15px;
+}
+
+.badge.bg-warning.text-dark {
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  z-index: 1;
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-size: 1rem;
+  box-shadow: 2px 2px 15px 9px #000000;
+}
+
+.badge-banner {
+  top: 80%;
+  border-radius: 15px;
+  font-size: 0.7rem;
+}
+
+
+.disabled-link {
+  pointer-events: none;
+  color: #6c757d; /* Bootstrap's text-muted color */
+  text-decoration: none;
+}
+
+ .fixed-size-card {
+            padding: 10px; /* Reduce padding inside the card */
+            z-index: 2;
+        }
+
+.fixed-size-image {
+    width: 100%;
+    height: auto;
+    /* object-fit: cover; */
+}
+
+ .fixed-bottom-button {
+            margin-top: 10px; /* Reduce margin above the button */
+        }
+
+.expanded-card {
+    width: 400px;  /* Set your desired width */
+    height: auto; /* Adjust the height as needed */
+    object-fit: cover;
+}
+
+.short-description {
+    font-size: 14px; /* Example font size */
+    color: #333; /* Example text color */
+    margin-bottom: 5px; /* Reduce margin */
+    margin-right: 10px; /* Add right margin */
+    line-height: 1.5; /* Example line height */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+ .d-flex {
+            margin-top: 7px; /* Reduce margin between price and button */
+        }
+
+.badge {
+            margin-left: 12px; /* Add margin to the left of the badge */
+        }
+
+
+        .background-container {
+          position: relative;
+          height: 100vh;
+          background-size: cover;
+          background-position: center;
+          transition: background-image 1s ease-in-out;
+      }
+.category-info {
+          position: absolute;
+          top: 50%;
+          
+          left: 50%;
+          transform: translate(-50%, -50%);
+          color: white;
+          text-align: center;
+          background: rgba(0, 0, 0, 0.5);
+          padding: 50px; /* Increased padding */
+          border-radius: 10px;
+          width: 90%; /* Optional: Set a width */
+          max-width: 700px; /* Optional: Set a maximum width */
+          height: auto; /* Optional: Set a height */
+          max-height: 80vh; /* Optional: Set a maximum height */
+          z-index: 1;
+      }
+      
+section {
+          padding: 60px 0;
+      }
+
+.content {
+        padding-top: 70px; /* Adjust this value based on the height of your fixed menu */
+    }
