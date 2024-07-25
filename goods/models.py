@@ -121,7 +121,7 @@ class Property(models.Model):
 
 class Email(models.Model):
   #  uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    email = models.EmailField(max_length=255, unique=True)
+    email = models.EmailField(max_length=255, unique=False)
     
     def __str__(self):
         return self.email

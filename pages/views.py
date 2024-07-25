@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView, View, DetailView
 from goods.models import Category, Product
+from .models import Contact
 from django.shortcuts import get_object_or_404
 from django.core.mail import send_mail
 from django.shortcuts import redirect
@@ -21,7 +22,7 @@ class HomePageView(LoginRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
         context['categories'] = Category.objects.all()
         #context['products'] = Product.objects.all()
-       # context['contact'] = Contact.objects.first()
+        context['contact'] = Contact.objects.first()
 
         return context
     
