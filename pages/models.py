@@ -20,6 +20,7 @@ class Contact(models.Model):
     email = models.ForeignKey(Email, on_delete=models.CASCADE, unique=False)
     ico = models.CharField(max_length=100)
     dic = models.CharField(max_length=100)
+    link_google_maps = models.TextField(blank=True, null=True)
     ic_dph = models.CharField(max_length=100)
     address = models.ForeignKey(Address, on_delete=models.CASCADE)
     phone = models.ForeignKey(Phone, on_delete=models.CASCADE)
